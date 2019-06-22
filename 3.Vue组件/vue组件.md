@@ -128,11 +128,30 @@
 #### 定义局部组件
     var local = {
         props: ['content','index'],//组件属性
-        template:'<li>{{content-index}}</li>'//模板
+        template:'<li>{{content-index}}</li>',//模板
+        methods:{
+                localHandlerClick:function(){
+                    //触发当前实例上的事件(delete)。附加参数(this.index)都会传给监听器回调。
+                    this.$emit('delete', this.index);
+                }
+            }
     };
 #### 调用局部组件
     components:{//调用局部组件，名为local，值为local对象
         'local':local
     },
-这里定义一个js对象local，在Vue实例中使用引用components:{'local':local}引入该对象(local)，名称为local，
+这里定义一个js对象local，在Vue实例中使用引用`components:{'local':local}`引入该对象(local)，名称为`local`。
+
+1. 局部组件local以`<local>`的方式使用
+2. 在子组件local中定义了一个方法 `localHandlerClick`，点击子组件，触发方法，这里通过`this.$emit('delete', this.index)`向父组件传递一个事件，事件名为`delete`，该事件传递了一个参数`this.index`。
+3. 父组件监听子组件的`@delete="handlerDelete"`，子组件`delete`事件触发，传递到父组件触发`@delete`调用方法`handlerDelete`。这就是子组件向父组件传值。
+4. [$emit](https://cn.vuejs.org/v2/api/#vm-emit)事件API
+
+<hr>
+
+<div>
+
+  <span style="float:left;">[返回顶部](#top)</span><span style="float:right;">[返回首页](../README.md) </span>
+
+</div>
 

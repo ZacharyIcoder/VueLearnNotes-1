@@ -55,3 +55,11 @@
     * @是v-on:的缩写
     * :是v-bind:的缩写
 6. {{}}模板语法，如 {{item}}取出item的值
+
+<hr>
+
+<div>
+
+  <span style="float:left;">[返回顶部](#top)</span><span style="float:right;">[返回首页](../README.md) </span>
+
+</div>

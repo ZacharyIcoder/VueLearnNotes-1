@@ -1,4 +1,4 @@
-## 安装
+## <span id="top">安装</span>
 
 ### 兼容性
 **Vue 不支持 IE8 及以下版本，因为 Vue 使用了 IE8 无法模拟的 ECMAScript 5 特性。但它支持所有兼容 ECMAScript 5 的浏览器**。
@@ -33,3 +33,12 @@ Vue 也可以在 unpkg 和 cdnjs 上获取 (cdnjs 的版本更新可能略滞后
 
 请确认了解不同构建版本并在你发布的站点中使用生产环境版本，把 vue.js 换成 vue.min.js。这是一个更小的构建，可以带来比开发环境下更快的速度体验。
 
+<hr>
+
+<div>
+
+  <span style="float:left;">[返回顶部](#top)</span><span style="float:right;">[返回首页](../README.md) </span>
+
+</div>
+
+                                 
