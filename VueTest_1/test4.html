@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-if/v-show/v-for 指令</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 使用v-if,不存在直接删除div存在就补上div -->
+        <div v-if="show">hello world(v-if)</div>
+        <hr>
+        <!-- 使用v-show,不存在不会删除div而是给其加上style="display:none;",存在就取消display属性 -->
+        <div v-show="show">hello world(v-show)</div>
+        <button @click="handleClick">toggle</button>
+        <hr>
+        <!-- list for循环 key值可以加快渲染速度,key唯一 -->
+        <ul>
+            <li v-for="(item,index) of list" :key="index">{{item}}</li>
+        </ul>
+    </div>
+    <script>
+        var vm = new new Vue({
+            el:"#app",
+            data:{
+                show:true,
+                list:[1,2,3],
+            },
+            methods: {
+                handleClick:function(){
+                    this.show=!this.show
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>属性绑定和双向数据绑定</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 属性绑定 -->
+        <div :title="'zty'+title">hello world</div>
+        <!-- 双向绑定 -->
+        <input v-model="content"/>
+        <div>{{content}}</div>
+
+    </div>
+    <script>
+        //v-bind ==> :,被v-bind绑定的数据是表达式不是一个字符串了
+        var vm = new new Vue({
+            el:"#app",
+            data:{
+                title:"this is hello world",
+                content:"this is content"
+            }
+        })
+    </script>
+</body>
+</html>

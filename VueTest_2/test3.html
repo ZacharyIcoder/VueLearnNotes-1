@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TodoList组件与实例关系</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <!-- 挂载点app -->
+    <div id="app">
+        <input v-model="inputValue"/>
+        <button @click="handleClick">提交</button>
+        <hr>
+        <!-- 列表 -->
+        <ul>
+            <li v-for="(item,index) in list" :key="index" >{{item}}</li>
+        </ul>
+        <h3>全局组件</h3>
+        <!-- 全局组件直接调用 -->
+        <ul>
+            <global v-for="(item,index) in list" :key="index" :content='item' ></global>
+        </ul>
+        <h3>局部组件</h3>
+        <!-- 局部组件 -->
+        <ul>
+            <part></part>
+        </ul>
+
+    </div>
+    <script>
+        // 全局组件，每一个组件都是一个vue实例
+        Vue.component('global', {
+            props: ['content'],//组件属性
+            template:'<li @click="fun1">{{content}}</li>',//模板
+            methods:{//组件方法
+                fun1:function(){
+                    alert("clicked")
+                }
+            }
+        });
+        //局部组件
+        var part = {
+            template:'<li>局部组件</li>'
+        };
+        // vue实例
+        var vm = new Vue({
+           el:"#app", 
+           components:{//调用局部组件
+               'part':part
+           },
+           data:{
+                inputValue:"",
+                list:[],
+           },
+           methods: {
+               handleClick:function(){
+                   if(this.inputValue){
+                       this.list.push(this.inputValue);
+                       this.inputValue="";
+                   }
+               }
+           }
+        });
+    </script>
+</body>
+</html>

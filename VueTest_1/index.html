@@ -1,0 +1,27 @@
+<!-- 第一个vue例子 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue 入门实例</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <!-- 挂载点，模板，实例之间的关系 -->
+    <!-- 挂载点el属性对应的元素 -->
+    <!-- 模板是挂载点内的内容,可以使用template -->
+    <!-- 实例 -->
+    <div id="root">{{msg}}</div>
+    <script>
+        var vm = new Vue({
+            el:"#root",
+            template:"<h1>zzzz,{{msg}}</h1>",
+            data:{
+                msg:"helloworld"
+            }
+        })
+    </script>
+</body>
+</html>

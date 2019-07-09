@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算属性和侦听器</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        
+        <!-- 双向绑定 -->
+        <span>姓：</span><input v-model="firstname"/>
+        <span>名：</span><input v-model="lastname"/>
+        <h4>直接两个模板</h4>
+        <div>{{firstname}}&nbsp;{{lastname}}</div>
+        <hr>
+        <h4>计算</h4>
+        <!-- 计算属性 -->
+        <div>{{fullname}}</div>
+        <hr>
+        <h4>变化次数</h4>
+        <div>{{count}}</div>
+    </div>
+    <script>
+        var vm = new new Vue({
+            el:"#app",
+            data:{
+                firstname:"",
+                lastname:"",
+                count:0
+            },
+            computed: {
+                //只有发生变化的才重新计算，不发生变化不计算，缓存
+                fullname:function(){
+                    return this.firstname+" "+this.lastname;
+                }
+            },
+            watch: {//侦听器
+                //发生变化count++
+                firstname:function(){
+                    this.count++;
+                },
+                lastname:function(){
+                    this.count++;
+                }
+                
+            }
+
+        })
+    </script>
+</body>
+</html>

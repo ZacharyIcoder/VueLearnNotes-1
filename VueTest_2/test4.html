@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TodoList删除功能</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <!-- 挂载点app -->
+    <div id="app">
+        <input v-model="inputValue"/>
+        <button @click="handleClick">提交</button>
+        <hr>
+        <h3>全局组件</h3>
+        <!-- 全局组件直接调用 -->
+        <ul>
+            <!-- @delete监听delete -->
+            <global v-for="(item,index) in list" :key="index" :content='item' :index='index' @delete='handleDelete' ></global>
+        </ul>
+
+    </div>
+    <script>
+        // 全局组件，每一个组件都是一个vue实例
+        Vue.component('global', {
+            props: ['content','index'],//组件属性
+            template:'<li @click="handleRemove">{{content}}</li>',//模板
+            methods:{//组件方法,点击删除，需要实现子组件和父组件通信
+                handleRemove:function(){
+                    this.$emit('delete', this.index);
+                }
+            }
+        });
+        // vue实例
+        var vm = new Vue({
+           el:"#app", 
+           data:{
+                inputValue:"",
+                list:[],
+           },
+           methods: {
+                handleClick:function(){
+                    if(this.inputValue){
+                        this.list.push(this.inputValue);
+                        this.inputValue="";
+                    }
+                },
+                handleDelete:function(index){
+                    //删除掉
+                    this.list.splice(index,1);
+                }
+           }
+        });
+    </script>
+</body>
+</html>
