@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue入门实例</title>
+    <!-- <script src="../vue.js"></script> -->
+    <!-- 引入vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="inputValue"/>
+        <button @click="handlerClick">提交</button>
+        <hr>
+        <ul>
+            <li v-for="(item,index) in list" :key="index">{{item}}</li>
+        </ul>
+        <hr>
+        <a :href="baidu">百度</a>
+        <hr>
+    </div>
+    <script>
+          
+        var app = new Vue({
+           el:"#app",
+           data:{
+               list:[],
+               inputValue:"",
+               baidu:"http://www.baidu.com"
+           },
+           methods: {
+               handlerClick:function(){
+                    if(!this.inputValue){
+                        alert("提交内容为空！");
+                        return;
+                    }
+                    this.list.push(this.inputValue);
+                    this.inputValue="";
+               }
+           }
+        });
+    </script>
+</body>
+</html>

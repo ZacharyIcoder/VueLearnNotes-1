@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue局部组件</title>
+    <!-- 引入vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input v-model="inputValue"/>
+        <button @click="handlerClick">提交</button>
+        <hr>
+        <ul>
+            <!-- 调用局部组件local,将局部组件local的content与item数据绑定，index与index绑定 -->
+            <local v-for="(item,index) in list" :key="index" :index="index" :content="item" @delete="handlerDelete" ></local>
+        </ul>
+    </div>
+    <script>
+        //局部组件
+        var local = {
+            props: ['content','index'],//组件属性
+            template:'<li @click="localHandlerClick">{{content-index}}</li>',//模板
+            methods:{
+                localHandlerClick:function(){
+                    //触发当前实例上的事件(delete)。附加参数(this.index)都会传给监听器回调。
+                    this.$emit('delete', this.index);
+                }
+            }
+        };
+        var app = new Vue({
+           el:"#app",
+           components:{//调用局部组件，名为local，值为local对象
+               'local':local
+           },
+           data:{
+                list:[],
+                inputValue:""
+           },
+           methods: {
+                handlerClick:function(){
+                        if(!this.inputValue){
+                            alert("输入为空");
+                            return;
+                        }
+                        this.list.push(this.inputValue);
+                        this.inputValue="";
+                },
+                handlerDelete:function(index){
+                    this.list.splice(index, 1);//删除数组索引index开始，1个元素
+                }
+           }
+        });
+    </script>
+</body>
+</html>
