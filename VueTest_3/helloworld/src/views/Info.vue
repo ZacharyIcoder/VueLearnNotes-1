@@ -1,10 +1,10 @@
 <template>
   <div>
     <ul>
-      <li @click="change(index++)"
+      <li @click="change(index)"
           v-for="(item,index) in list" 
           :key="index"
-          :class="{active: index==current}"  >{{item}}</li>
+          :class="{active: index==current && current!==''}"  >{{item}}</li>
     </ul>
     <button @click="add()">添加</button>
     <ul>
@@ -30,8 +30,10 @@ export default {
     },
     add(){
       console.log(this.list[this.current])
-      this.array.push(this.list[this.current])
-      this.current=11
+      if(this.current!==''){
+        this.array.push(this.list[this.current])
+      }
+      this.current=''
     }
   }
 };
