@@ -12,7 +12,7 @@ Vue实例的生命周期中有多个状态。
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Vue实例的生命周期</title>
-        
+
         <!-- 引入vue.js -->
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
     </head>
@@ -164,7 +164,7 @@ Vue实例的生命周期中有多个状态。
         <script>
             var app = new Vue({
                 el:"#app",
-                data:{  
+                data:{
                     msg:"template优先"
                 },
                 template:"<p>{{msg}}</p>",
@@ -193,7 +193,7 @@ Vue实例的生命周期中有多个状态。
 ![7](images/7.png)
 >beforeMount
 
-载入前（完成了data和el数据初始化），但是页面中的内容还是vue中的占位符，data中的message信息没有被挂在到Bom节点中，在这里可以在渲染前最后一次更改数据的机会，不会触发其他的钩子函数，一般可以在这里做初始数据的获取。
+载入前（完成了data和el数据初始化），但是页面中的内容还是vue中的占位符，data中的message信息没有被挂在到Dom节点中，在这里可以在渲染前最后一次更改数据的机会，不会触发其他的钩子函数，一般可以在这里做初始数据的获取。
 >Mount
 
 载入后html已经渲染(ajax请求可以放在这个函数中)，把vue实例中的data里的message挂载到BOM节点中去
@@ -218,7 +218,7 @@ Vue实例的生命周期中有多个状态。
         updated: function () {
             console.log('调用了updated钩子函数')
         }
-    })    
+    })
     app.msg = 2
 结果：
 ![9](images/9.png)
@@ -231,7 +231,7 @@ Vue实例的生命周期中有多个状态。
         var app = new Vue({
             el:"#app",
             template:"<p>{{msg}}</p>",
-            data:{  
+            data:{
                 msg:"原数据"
             },
             beforeUpdate: function () {
