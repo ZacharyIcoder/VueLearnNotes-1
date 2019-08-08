@@ -27,9 +27,9 @@
           <td>{{book.beginDate}}</td>
           <td>{{book.price | showPrice}}</td>
           <td>
-            <button @click="book.count--">-</button>
+            <button @click="decrement(index)" :disabled="book.count<=1" >-</button>
             {{book.count}}
-            <button @click="book.count++">+</button>
+            <button @click="increment(index)">+</button>
           </td>
           <td><button @click="remove">移除</button></td>
         </tr>

@@ -30,21 +30,27 @@ const app = new Vue({
   computed: {
     totalPrice () {
         let total = 0;
-        for (let i = 0; i < this.books.length; i++) {
-          total = total + this.books[i].price * this.books[i].count
+        //1.普通for循环
+        // for (let i = 0; i < this.books.length; i++) {
+        //   total = total + this.books[i].price * this.books[i].count
+        // }
+        // 2.增强for循环
+        // for (let i in this.books) {
+        //   total = total + this.books[i].price * this.books[i].count
+        // }
+        // 3.for of
+        for (const book of this.books) {
+          total = total + book.price * book.count
         }
         return total
       }
   },
   methods: {
     increment(index){
-      this.books[index].count++;
+      this.books[index].count++
     },
     decrement(index){
-      this.books[index].count--;
-      if(this.books[index].count===0){
-        this.books.splice(index,1)
-      }
+      this.books[index].count--
     },
     remove(index){
       this.books.splice(index,1)
