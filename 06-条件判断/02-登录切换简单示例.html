@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" placeholder="showMsg">
+    <button>{{btnMsg}}</button>
+    <button @click="test" >{{btn2Msg}}</button>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el:"#app",
+      data:{
+        showMsg:"请输入用户名",
+        btnMsg:"登录",
+        btn2Msg:"切换到注册",
+        isFlag:true
+      },
+      methods: {
+        test(){
+          this.isFlag = !this.isFlag
+          if(this.isFlag){
+            this.showMsg = "请输入用户名"
+            this.btnMsg = "登录"
+            this.btn2Msg = "切换到注册"
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>
