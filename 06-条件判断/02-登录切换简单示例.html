@@ -8,29 +8,23 @@
 </head>
 <body>
   <div id="app">
-    <input type="text" placeholder="showMsg">
-    <button>{{btnMsg}}</button>
-    <button @click="test" >{{btn2Msg}}</button>
+    <!-- 添加key主要是为了让vue不复用dom，如果不添加vue底层会复用dom -->
+    <span v-if="isUser">
+      <label for="username">用户账号</label>
+      <input type="text" id="username" placeholder="请输入用户名" key="username">
+    </span>
+    <span v-else="isUser">
+        <label for="email">用户邮箱</label>
+        <input type="text" id="email" placeholder="请输入用户邮箱" key="email">
+    </span>
+    <button @click="isUser=!isUser">切换类型</button>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
   <script>
     const app = new Vue({
       el:"#app",
       data:{
-        showMsg:"请输入用户名",
-        btnMsg:"登录",
-        btn2Msg:"切换到注册",
-        isFlag:true
-      },
-      methods: {
-        test(){
-          this.isFlag = !this.isFlag
-          if(this.isFlag){
-            this.showMsg = "请输入用户名"
-            this.btnMsg = "登录"
-            this.btn2Msg = "切换到注册"
-          }
-        }
+        isUser:true
       }
     })
   </script>
