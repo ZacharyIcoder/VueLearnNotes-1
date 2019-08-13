@@ -1,4 +1,5 @@
 const path = require('path') //获取node模块
+const webapck = require('webpack')
 
 module.exports = {
   entry: "./src/main.js", //导入入口
@@ -37,10 +38,19 @@ module.exports = {
 
           },
         }]
+      },
+      {
+        test: /\.vue)$/,
+        use:['vue-loader']
       }
+
     ]
 
-  }
+  },
+  plugins:[
+    new webpack.BannerPlugin("xxxx")
+  ]
+
 }
 
 //到02-webpack的配置目录

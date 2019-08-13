@@ -77,10 +77,20 @@ loader是webpack中一个非常核心的概念
 
 ### webpack中配置vue
 
-
+使用`npm install vue --save`
 
 ### plugin的使用
 
+1. 通过npm安装插件
+2. 在webpack.config.js中配置
+
+        const webpack = require('webpack')
+
+        module.exports = {
+          plugins:[
+            new webpack.BannerPlugin("xxxx")
+          ]
+        }
 
 
 

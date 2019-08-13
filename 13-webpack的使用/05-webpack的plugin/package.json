@@ -9,6 +9,8 @@
     "less-loader": "^5.0.0",
     "style-loader": "^1.0.0",
     "url-loader": "^2.1.0",
+    "vue-loader": "^15.7.1",
+    "vue-template-compiler": "^2.6.10",
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6"
   },
@@ -18,5 +20,7 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "vue": "^2.6.10"
+  }
 }

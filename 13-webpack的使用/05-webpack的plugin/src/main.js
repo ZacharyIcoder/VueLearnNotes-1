@@ -23,8 +23,18 @@ require("./css/normal.css")
 // 4.依赖less文件
 require("./css/special.less")
 
-// 5.依赖图片
+// 5.使用vue开发
+import Vue from 'vue'
+// import App from './js/app.js'
+import App from './vue/App.vue'
 
+const app = new Vue({
+  el:"#app",
+  template:"<App/>",
+  components:{
+    App
+  }
+})
 
 
 
