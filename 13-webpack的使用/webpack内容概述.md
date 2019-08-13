@@ -38,15 +38,52 @@ webpack就是前端模块化打包工具
 ### webpack的安装
 
 webpack依赖node环境
+node自带npm
+通过`npm install webpack -g`全局安装
+由于vue-cli2基于webpack3.6.0
+如果要用vue-cli2的可以使用`npm install webpack@3.6.0 -g`
+
+1. 全局安装
+`npm install webpack -g`
+2. 局部安装
+`npm install webpack --save-dev`
+
+- 在终端执行webpack命令，使用的是全局安装
+- 当在package.json中定义了scripts时，其中包括了webpack命令，那么使用的是局部webpack
 
 ### webpack的起步
 
+
+
 ### webpack的配置
+1.使用`npm init` 初始化
+2.取一个英文名（中文可能有问题）
+3.`npm install`安装依赖包
+4.`webpack`
+5.在package.json中scripts中添加"build": "webpack"，使用`npm run build`，此时执行的是"webpack",优先寻找本地的webpack版本，本地没有全局（终端执行的是全局的）,package.json中依赖了webpack，使用`npm install`安装依赖包，会使用安装的webpack
+`npm install webpack@3.6.0 --save-dev`
+此时webpack使用的是本地的3.6.0的
 
 ### loader的使用
+loader是webpack中一个非常核心的概念
+>webpack用来做什么？
+- webpack主要用来处理js代码依赖
+- css、图片、ES6转ES5、TS转JS、scss、less转css，.vue转js等
+- 结合loader就可以解决这些问题
+>loader使用过程
+- 通过npm安装需要的loader
+- 在webpack.config.js中module关键字下配置
+>注意：大部分loader都可以在webpack官网找到，并有相对应的使用方法
 
 ### webpack中配置vue
 
+
+
 ### plugin的使用
 
+
+
+
 ### 搭建本地服务器
+
+
