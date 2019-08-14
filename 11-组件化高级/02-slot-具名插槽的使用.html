@@ -17,15 +17,18 @@
     <cpn>
       <span>没具名</span>
       <span slot="left">这是左边具名插槽</span>
-      <span slot="center">这是中间具名插槽</span>
-      <span slot="right">这是右边具名插槽</span>
+      <!-- 新语法 -->
+      <template v-slot:center>这是中间具名插槽</template>
+      <!-- 新语法缩写 -->
+      <template #right>这是右边具名插槽</template>
+
 
     </cpn>
 
 
   </div>
 
-<!-- 插槽的基本使用使用<slot></slot> -->
+  <!-- 插槽的基本使用使用<slot></slot> -->
   <!-- 子组件 -->
   <template id="cpn">
 

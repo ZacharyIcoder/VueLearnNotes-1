@@ -96,4 +96,6 @@ loader是webpack中一个非常核心的概念
 
 ### 搭建本地服务器
 
+使用插件webpack-dev-serve
+
 
