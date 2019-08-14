@@ -21,11 +21,11 @@ const routes = [
     component: Home,
     children: [
       {
-        path: "/news",
+        path: "news",
         component: ()=> import("../components/HomeNews.vue")
       },
       {
-        path: "/messages",
+        path: "messages",
         component: ()=> import("../components/HomeMessages.vue")
       }
     ]

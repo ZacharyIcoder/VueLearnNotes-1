@@ -132,3 +132,25 @@ go`history.go(-1)`
 
 
 ### 路由嵌套
+
+>路由配置
+
+    children: [
+      {
+        path: "news",
+        component: ()=> import("../components/HomeNews.vue")
+      },
+      {
+        path: "messages",
+        component: ()=> import("../components/HomeMessages.vue")
+      }
+    ]
+
+>路由组件
+
+    <router-link to="/news">新闻</router-link>
+    <router-link to="/messages">消息</router-link>
+    <router-view></router-view>
+
+
+
