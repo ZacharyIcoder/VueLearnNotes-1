@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Promise的基本使用</title>
+</head>
+
+<body>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script>
+    // 1.使用settimeout
+    // setTimeout(() => {
+    //   console.log("hello promise");
+    // }, 2000);
+    // 参数->函数(resolve,reject)
+    // resolve,reject本身又是函数
+    new Promise((resolve, reject) => {
+      // 1. 第一次网络请求代码
+      setTimeout(() => {
+        //调用了resolve()就会到then()
+        resolve()
+      }, 1000)
+    }).then(() => {
+      // 第一次请求结果代码
+      console.log("hello promise");
+      console.log("hello promise");
+      console.log("hello promise");
+      console.log("hello promise");
+      console.log("hello promise");
+      //返回Promise对象，链式调用
+      return new Promise((resolve, reject) => {
+        // 第二次网络请求代码
+        setTimeout(() => {
+          resolve()
+        }, 1000);
+      }).then(() => {
+        // 第二次请求结果代码
+        console.log("hello vue");
+        console.log("hello vue");
+        console.log("hello vue");
+        console.log("hello vue");
+        console.log("hello vue");
+        return new Promise((resolve, reject) => {
+          // 第三次网络请求代码
+          setTimeout(() => {
+            resolve()
+          }, 1000);
+        }).then(() => {
+          // 第三次请求结果代码
+          console.log("hello js");
+          console.log("hello js");
+          console.log("hello js");
+          console.log("hello js");
+          console.log("hello js");
+        })
+      })
+    })
+  </script>
+</body>
+
+</html>

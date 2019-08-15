@@ -9,10 +9,35 @@
 </template>
 
 <script>
-  export default {
-    name: "Home"
+export default {
+  name: "Home",
+  data() {
+    return {
+      path: "/home/news"
+    };
+  },
+  created() {
+    console.log("created");
+  },
+  destroyed() {
+    console.log("destroyed");
+  },
+  activated() {
+    console.log("activated");
+    //处于活跃状态时候跳转页面
+    this.$router.push(this.path);
+  },
+  beforeRouteLeave(to, from, next) {
+    // 导航离开之前记录path
+    console.log(this.$route.path);
+    this.path = this.$route.path;
+    next()
   }
-
+  // deactivated() {
+  //   console.log("deactivated");
+  //   this.path = this.$route.path
+  // },
+};
 </script>
 
 <style scoped></style>

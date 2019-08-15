@@ -1,4 +1,4 @@
-## 二、Vue-Router
+## Vue-Router
 
 - 认识路由
 - vue-router的使用
@@ -146,11 +146,137 @@ go`history.go(-1)`
       }
     ]
 
+注意path不加'/'
 >路由组件
+
+在Home.vue（需要嵌套的路由组件）
+
 
     <router-link to="/news">新闻</router-link>
     <router-link to="/messages">消息</router-link>
     <router-view></router-view>
 
+### vue-router的参数传递
 
+- 动态路由方式：通过`$route.params.userId`获取由`path: "/user/:userId"`，需要传递的参数`<router-link :to="/user/+userId">用户</router-link>`
+  - 配置路由方式`/router/:id`
+  - 传递方式**在path后面跟上对应的值**
+  - 传递后形成的路径：**/router/123、/router/aaa**
+- 通过`$route.query`获取传过来的对象,路由配置`path: "/user"`,传递参数`  <router-link :to="{path:'/profile',query:{id:'zzz',age:18}}">档案</router-link>`
+  - 配置路由方式`/router`，跟普通配置一样
+  - 传递的方式：对象中使用**query的key作为参数传递**
+  - 传递后的路径：**/router?id=123、/router?id=aaa**
+
+- 通过方法传递`$router.push()`
+
+        linkClick() {
+          const obj = {
+            path: "/link",
+            query: {
+              id: 123,
+              age: 22,
+              height: 188
+            }
+          };
+          this.$router.push(obj);
+        }
+
+### 理解vue-router-router和route的由来
+
+
+### vue-router全局导航守卫
+
+SPA页面修改title，使用全局导航守卫
+
+定义meta元数据
+
+    {
+      path: "/home",
+      component: Home,
+      meta: { //元数据
+        title: "首页"
+      }
+    }
+
+
+通过beforeEach(to,from,next)获取，不调用next,路由无法跳转
+
+    //前置钩子(守卫)跳转前-----全局守卫
+    router.beforeEach((to, from, next) => {
+      //获取要跳转的路由的元数据
+      document.title = to.meta.title
+      //document.title = to.matched[0].meta.title//嵌套路由时候可以使用这个获取父路由元数据
+      //调用next()
+      next()
+    })
+
+`next('\')`跳转到\，`next(false)`不跳转
+
+//后置钩子(守卫)跳转后,不需要主动调用next()-----全局守卫
+
+    router.afterEach((to,from)=>{
+      console.log(to);
+    })
+
+路由独享守卫
+
+  {
+      path: "/home",
+      component: Home,
+      meta: { //元数据
+        title: "首页"
+      },
+      beforeEnter: (to, from, next) => {
+        // 进入之前
+        console.log("11111");
+
+        next()
+      },
+  }
+
+[更多详见Vue-Router](https://router.vuejs.org/zh/guide/advanced/navigation-guards.html#%E8%B7%AF%E7%94%B1%E7%8B%AC%E4%BA%AB%E7%9A%84%E5%AE%88%E5%8D%AB)
+
+
+### keep-alive
+
+- keep-alive是Vue内置的一个组件，可以使被包含的组件保留状态，或避免重新渲染
+- router-view也是一个组件，如果直接被包在keep-alive里面，所有路径匹配到的视图组件都被缓存
+
+两个函数：
+
+    activated() {
+        console.log("activated");
+        //处于活跃状态时候跳转页面，活跃状态调用
+        this.$router.push(this.path);
+      },
+      deactivated() {
+        //失去活跃状态调用
+        console.log("deactivated");
+      },
+
+属性：
+
+- include - 字符串或正则表达式，只有匹配的才会缓存
+- exclude - 字符串或正则表达式，只有匹配的才不会缓存
+
+### TabBar案例
+首页/分类/购物车/我的
+
+-  style中引用使用@import
+- 路径起别名（webpack配置文件）
+
+  resolve: {
+    extensions: ['.js', '.vue', '.json'],
+    alias: {
+      '@': resolve('src'),
+      'assets': resolve('src/assets'),
+      'components': resolve('src/components'),
+      'views': resolve('scr/views')
+    }
+  },
+
+>引用路径
+- import TabBarItem from "components/tabbar/TabBarItem";
+- `<img src="~assets/img/tarbar/shop.png" alt="" srcset="">`需要使用~
+vue-cli3中先定义了`'@': resolve('src'),`,可以使用`'assets': resolve('@/assets'),`
 
