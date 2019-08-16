@@ -60,6 +60,22 @@
         })
       })
     })
+
+    // 什么情况下会使用Promise？
+    // 一般是有异步操作，使用Promise这个异步操作进行封装
+    // new -> 构造函数(1.保存一些状态信息 2.执行传入的函数)
+    // 在执行回调函数时候(resolve，reject)本身又是函数
+    new Promise((resolve,reject) => {
+      setTimeout(() => {
+        //成功时候调用resolve
+        //失败的时候调用reject
+        reject('error message')
+      }, 1000);
+    }).catch(error => {
+      console.log(error)
+    })
+
+
   </script>
 </body>
 

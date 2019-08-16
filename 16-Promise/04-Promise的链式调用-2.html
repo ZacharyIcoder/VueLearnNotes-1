@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Promise的基本使用</title>
+</head>
+
+<body>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script>
+    //网络请求aaa ->处理（）
+    //处理 aaa+111 ->处理
+    //处理aaa111+222 ->处理
+
+    new Promise(resolve => {
+      setTimeout(() => {
+        resolve('aaa')
+      }, 1000);
+    }).then(res => {
+      console.log(res)
+      return new Promise(resolve => {
+        resolve(res + '111')
+      }).then((res) => {
+        console.log(res)
+        return new Promise(resolve => {
+          resolve(res + '222')
+        }).then(res => {
+          console.log(res)
+        })
+      })
+    })
+    //简写
+    new Promise(resolve => {
+      setTimeout(() => {
+        resolve('aaa')
+      }, 1000);
+    }).then(res => {
+      console.log(res)
+      return Promise.resolve(res + '111')
+    }).then((res) => {
+      console.log(res)
+      return Promise.resolve(res + '222')
+    }).then(res => {
+      console.log(res)
+    })
+
+    //在简写
+    new Promise(resolve => {
+      setTimeout(() => {
+        resolve('aaa')
+      }, 1000);
+    }).then(res => {
+      console.log(res)
+      return es + '111'
+    }).then((res) => {
+      console.log(res)
+      return res + '222'
+    }).then(res => {
+      console.log(res)
+    })
+
+
+        //简写
+    new Promise(resolve => {
+      setTimeout(() => {
+        resolve('aaa')
+      }, 1000);
+    }).then(res => {
+      console.log(res)
+      return Promise.resolve(res + '111')
+    }).then((res) => {
+      console.log(res)
+      return Promise.resolve(res + '222')
+    }).then(res => {
+      console.log(res)
+    })
+
+    //catch
+    new Promise(resolve => {
+      setTimeout(() => {
+        resolve('aaa')
+      }, 1000);
+    }).then(res => {
+      console.log(res)
+      // return Promise.reject('error message')
+      throw 'error message'
+    }).then((res) => {
+      console.log(res)
+      return res + '222'
+    }).then(res => {
+      console.log(res)
+    }).catch(error){
+      console.log(error)
+    }
+  </script>
+</body>
+
+</html>

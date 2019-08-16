@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Promise的基本使用</title>
+</head>
+
+<body>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script>
+    //     如下情况：
+    //    有两个网络请求A和B,只有AB都返回结果才进行下一步
+    //    ajax可能会这么写
+    // $.ajax({
+    //   ...//结果A
+    //   resultA = true
+    //   callback()
+    // })
+    // $.ajax({
+    //   ...//结果B
+    //   resultB = true
+    //   callback()
+    // })
+    // //回调函数
+    // function callback(){
+    //   if(resultA&&resultB){
+    //     ...
+    //   }
+    // }
+
+    Promise.all([
+      new Promise((resolve, reject) => {
+        $.ajax({
+          url:"url1",
+          success:function(data){
+            resolve(data)
+          }
+        })
+      }),
+      new Promise((resolve, reject) => {
+        $.ajax({
+          url:"url2",
+          success:function(data){
+            resolve(data)
+          }
+        })
+      }),
+    ]).then(res => {
+      // result[0]网络请求1的结果
+      // result[1]网络请求2的结果
+    })
+  </script>
+</body>
+
+</html>
