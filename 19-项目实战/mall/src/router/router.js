@@ -6,6 +6,10 @@ Vue.use(Router)
 
 const routes = [
   {
+    path:'/',
+    redirect: '/home' //路径为''自动重定向到/home
+  },
+  {
     path: '/home',
     component: () => import ('views/home/Home.vue')
   },
