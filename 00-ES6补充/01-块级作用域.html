@@ -8,11 +8,11 @@
 </head>
 <body>
 
+  <button>按钮0</button>
   <button>按钮1</button>
   <button>按钮2</button>
   <button>按钮3</button>
   <button>按钮4</button>
-  <button>按钮5</button>
 
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
@@ -34,21 +34,23 @@
       //   func = function (){
       //     console.log(name);
       //   }
+      //   debugger
       //   func()
       // }
       // name = "tttt"
+      // debugger
       // func()
       // console.log(name);
 
       // 3.没有块级作用域引起的问题:for块级
-      // var btns = document.getElementById("button")
-      // for (let i = 0; i < btns.length; i++) {
+      // var btns = document.getElementsByTagName("button")
+      // for (var i = 0; i < btns.length; i++) {
       //   btns[i].addEventListener('click',function (param) {
       //   console.log("第"+i+"个按钮被点击了");
       //   })
       // }
       // 使用闭包,函数有作用域
-      // for (let i = 0; i < btns.length; i++) {
+      // for (var i = 0; i < btns.length; i++) {
       //   (function (i) {
       //     btns[i].addEventListener('click',function (param) {
       //       console.log("第"+i+"个按钮被点击了");
@@ -56,7 +58,7 @@
       //   })(i)
       // }
       // ES6使用let/const
-      const btns = document.getElementById("button")
+      const btns = document.getElementsByTagName("button")
       for (let i = 0; i < btns.length; i++) {
         btns[i].addEventListener('click',function (param) {
           console.log("第"+i+"个按钮被点击了");
