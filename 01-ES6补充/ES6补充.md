@@ -328,3 +328,57 @@ setTimeout(() => {
     obj.aaa()
 ```
 
+## 高阶函数
+
+### 1.5.1	filter过滤函数
+
+```javascript
+const nums = [2,3,5,1,77,55,100,200]
+//要求获取nums中大于50的数
+//回调函数会遍历nums中每一个数，传入回调函数，在回调函数中写判断逻辑，返回true则会被数组接收，false会被拒绝
+let newNums = nums.filter(function (num) {
+  if(num > 50){
+    return true;
+  }
+  return false;
+ })
+ //可以使用箭头函数简写
+//  let newNums = nums.filter(num => num >50)
+```
+
+### 1.5.2	map高阶函数
+
+```javascript
+// 要求将已经过滤的新数组每项乘以2
+//map函数同样会遍历数组每一项，传入回调函数为参数，num是map遍历的每一项，回调函数function返回值会被添加到新数组中
+let newNums2 = newNums.map(function (num) {
+  return num * 2
+ })
+ //简写
+//  let newNums2 = newNums.map(num => num * 2)
+console.log(newNums2);
+```
+
+### 1.5.3	reduce高阶函数
+
+```javascript
+// 3.reduce高阶函数
+//要求将newNums2的数组所有数累加
+//reduce函数同样会遍历数组每一项，传入回调函数和‘0’为参数，0表示回调函数中preValue初始值为0，回调函数中参数preValue是每一次回调函数function返回的值，currentValue是当前值
+//例如数组为[154, 110, 200, 400],则回调函数第一次返回值为0+154=154，第二次preValue为154，返回值为154+110=264，以此类推直到遍历完成
+let newNum = newNums2.reduce(function (preValue,currentValue) {
+  return preValue + currentValue
+ },0)
+//简写
+// let newNum = newNums2.reduce((preValue,currentValue) => preValue + currentValue)
+console.log(newNum);
+```
+
+### 1.5.4综合使用
+
+```javascript
+//三个需求综合
+let n = nums.filter(num => num > 50).map(num => num * 2).reduce((preValue,currentValue) => preValue + currentValue)
+console.log(n);
+```
+
