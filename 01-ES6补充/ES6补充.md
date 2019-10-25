@@ -202,3 +202,129 @@ const obj = {
 }
 ```
 
+## 1.4	箭头函数
+
+### 1.4.1	认识箭头函数
+
+> 传统定义函数的方式
+
+```javascript
+  const aaa = function (param) {
+      
+  }
+```
+
+> 对象字面量中定义函数
+
+```javascript
+const obj = {
+    bbb (param) {  },
+}
+```
+
+> ES6中的箭头函数
+
+```javascript
+//const ccc = (参数列表) => {}
+  const ccc = () => {}
+```
+
+### 1.4.2	箭头函数的参数和返回值
+
+#### 1.4.2.1	参数问题
+
+> 1.放入两个参数
+
+```javascript
+const sum = (num1,num2) => {
+    return num1 + num2 
+}
+```
+
+> 2.放入一个参数,()可以省略
+
+```javascript
+const power = num => {
+  return num * num
+}
+```
+
+#### 1.4.2.2	函数内部
+
+> 1.函数中代码块中有多行代码
+
+```javascript
+const test = () =>{
+  console.log("hello zzz")
+  console.log("hello vue")
+}
+```
+
+> 2.函数代码块中只有一行代码，可以省略return
+
+```javascript
+// const mul = (num1,num2) => {
+//   return num1 * num2
+// }
+const mul = (num1,num2) => num1* num2
+// const log = () => {
+//   console.log("log")
+// }
+const log = () => console.log("log")
+```
+
+### 1.4.3	箭头函数的this使用
+
+> 什么时候使用箭头函数
+
+```javascript
+setTimeout(function () {
+	console.log(this)
+} , 1000);
+setTimeout(() => {
+	console.log(this)//这里this找的是window的this
+}, 1000);
+```
+
+> 结论：箭头函数没有this，这里this引用的是最近作用域（aaa函数里的this）的this。
+
+```javascript
+    const obj = {
+      aaa(){
+        setTimeout(function () {
+          console.log(this)//window
+         });
+         setTimeout(() => {
+          console.log(this)//obj
+        });
+      }
+    }
+    obj.aaa()
+```
+
+> ​	上述中第一个是window对象的this，第二个箭头函数的this是obj的。
+
+```javascript
+    const obj = {
+      aaa() {
+        setTimeout(function () {
+          setTimeout(function () {
+            console.log(this) //window
+          })
+          setTimeout(() => {
+            console.log(this) //window
+          })
+        })
+        setTimeout(() => {
+          setTimeout(function () {
+            console.log(this) //window
+          })
+          setTimeout(() => {
+            console.log(this) //obj
+          })
+        })
+      }
+    }
+    obj.aaa()
+```
+
