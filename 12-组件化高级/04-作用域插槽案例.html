@@ -24,14 +24,11 @@
     </cpn>
     <cpn>
         <!-- 2.5以下必须使用template -->
-        <template slot-scope="slot">
+        <template v-slot="slot">
           <!-- <span v-for="(item, index) in slot.data" :key="index">{{item}}*</span> -->
           <span>{{slot.data.join(' * ')}}</span>
         </template>
-      </cpn>
-
-
-
+    </cpn>
   </div>
 
 <!-- 插槽的基本使用使用<slot></slot> -->
