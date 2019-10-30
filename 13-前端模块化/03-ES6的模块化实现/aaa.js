@@ -10,14 +10,17 @@ if (flag) {
   console.log(sum(10, 20))
 }
 //2.最后统一导出
-export default{
-  flag,sum
+export {
+  flag,sum,age
 }
 
-//3.导出函数
+//3.导出函数/类
+export function say(value) {
+  console.log(value);
+}
 
 export class Person{
   run(){
-    console.log("再奔跑");
+    console.log("奔跑");
   }
 }
