@@ -4,7 +4,7 @@
 
 ​	Vue实例的生命周期中有多个状态。
 
-![生命周期图](images/lifecycle.png)
+![生命周期图](./images/lifecycle.png)
 
 > 测试代码
 
@@ -71,7 +71,7 @@
 
 如图所示：
 
-![reslut](images/1.png)
+![reslut](./images/1.png)
 
 初始化页面依次调用了：
 
@@ -107,7 +107,7 @@
 ### 13.2.3	created钩子函数和beforeMount间的生命周期
 
 对于created钩子函数和beforeMount有判断：
-![2](D:/zhangtianyi/github/VueLearnNotes-1/13-Vue实例的生命周期/images/2.png)
+![2](./images/2.png)
 
 #### 13.2.3.1el选项对生命周期影响
 
@@ -130,7 +130,7 @@
     })
 
 结果:
-![有el](D:/zhangtianyi/github/VueLearnNotes-1/13-Vue实例的生命周期/images/3.png)
+![有el](./images/3.png)
 
 >2. 无el选项
 
@@ -150,7 +150,7 @@
     })
 
 结果：
-![无el](D:/zhangtianyi/github/VueLearnNotes-1/13-Vue实例的生命周期/images/4.png)
+![无el](./images/4.png)
 
 >证明没有el选项，则停止编译，也意味着暂时停止了生命周期。生命周期到created钩子函数就结束了。而当我们不加el选项，但是手动执行vm.$mount(el)方法的话，也能够使暂停的生命周期进行下去，例如：
 
@@ -171,11 +171,11 @@
     app.$mount('#app')
 
 结果：
-![有el](D:/zhangtianyi/github/VueLearnNotes-1/13-Vue实例的生命周期/images/3.png)
+![有el](./images/3.png)
 
 #### 13.2.3.2	template
 
-![template](D:/zhangtianyi/github/VueLearnNotes-1/13-Vue实例的生命周期/images/5.png)
+![template](./images/5.png)
 
 >同时使用`template`和`HTML`，查看优先级：
 
@@ -194,7 +194,7 @@
         </script>
 
 结果：
-![template](D:/zhangtianyi/github/VueLearnNotes-1/13-Vue实例的生命周期/images/6.png)
+![template](./images/6.png)
 
 >结论
 
@@ -219,7 +219,7 @@
 
 ### 13.2.4	beforeMount和mounted钩子函数间的生命周期
 
-![7](D:/zhangtianyi/github/VueLearnNotes-1/13-Vue实例的生命周期/images/7.png)
+![7](./images/7.png)
 
 >beforeMount
 
@@ -233,7 +233,7 @@
 
 ### 13.2.5	beforeUpdate钩子函数和updated钩子函数间的生命周期
 
-![8](D:/zhangtianyi/github/VueLearnNotes-1/13-Vue实例的生命周期/images/8.png)
+![8](./images/8.png)
 在Vue中，修改数据会导致重新渲染，依次调用beforeUpdate钩子函数和updated钩子函数
 
 如果待修改的数据没有载入模板中，不会调用这里两个钩子函数
@@ -254,7 +254,7 @@
     app.msg = 2
 
 结果：
-![9](D:/zhangtianyi/github/VueLearnNotes-1/13-Vue实例的生命周期/images/9.png)
+![9](./images/9.png)
 如果绑定了数据，会调用两个钩子函数：
 
     <h1>测试有数据绑定修改数据，钩子函数调用情况</h1>
@@ -278,13 +278,13 @@
     </script>
 
 结果：
-![10](D:/zhangtianyi/github/VueLearnNotes-1/13-Vue实例的生命周期/images/10.png)
+![10](./images/10.png)
 
 >注意只有写入模板的数据才会被追踪
 
 ### 13.2.6	beforeDestroy和destroyed钩子函数间的生命周期
 
-![11](D:/zhangtianyi/github/VueLearnNotes-1/13-Vue实例的生命周期/images/11.png)
+![11](./images/11.png)
 
 #### 13.2.6.1	beforeDestroy
 
@@ -302,7 +302,14 @@
 - beforeDestroy： 你确认删除XX吗？
 - destroyed ：当前组件已被删除，清空相关内容
 
+
+
+
+
 <hr>
+
 <div>
   <span style="float:left;">[返回顶部](#top)</span><span style="float:right;">[返回首页](../README.md) </span>
 </div>
+
+
