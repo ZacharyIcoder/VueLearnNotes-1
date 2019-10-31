@@ -307,9 +307,7 @@
 
 
 <hr>
-
 <div>
-  <span style="float:left;">[返回顶部](#top)</span><span style="float:right;">[返回首页](../README.md) </span>
+  <span style="float:left;"><a href="#top">返回顶部</a></span><span style="float:right;"><a href="../README.md">返回首页</a></span>
 </div>
-
 
