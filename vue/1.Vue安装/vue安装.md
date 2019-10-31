@@ -37,8 +37,6 @@ Vue 也可以在 unpkg 和 cdnjs 上获取 (cdnjs 的版本更新可能略滞后
 
 <div>
 
-  <span style="float:left;">[返回顶部](#top)</span><span style="float:right;">[返回首页](../README.md) </span>
+  <span style="float:left;">[返回顶部](#top)</span><span style="float:right;">[返回首页](../README.md) </span></div>
 
-</div>
-
-                                 
+​                                 
